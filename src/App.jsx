@@ -17,23 +17,23 @@ function App() {
 
   const [filter, setFilter] = useState('');
 
-  // Збереження контактів у локальному сховищі
+
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  // Додавання нового контакту
+
   const addContact = (name, number) => {
     const newContact = { id: nanoid(), name, number };
     setContacts((prevContacts) => [newContact, ...prevContacts]);
   };
 
-  // Видалення контакту
+
   const deleteContact = (id) => {
     setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
   };
 
-  // Фільтрація контактів
+
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
